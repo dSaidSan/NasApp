@@ -1,0 +1,29 @@
+<div class="row container">
+    <p *ngIf="(listaFavoritos | async)?.length == 0">No se han encontrado registros</p>
+    <div *ngFor="let apod of listaFavoritos | async; let i = index" class="col-sm-12 col-md-6 col-lg-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-group">
+                <img class="card-img-top" src="{{apod.url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{apod.title}}</h5>
+                    <p class="card-text">{{apod.explanation | truncatePipe : 40 : '...'}}</p>
+                    <a class="btn btn-danger" (click)="deleteApod(apod.id);">Borrar</a>
+                    <a class="btn btn-primary" style="float: right;" (click)="openApodModal(apod);">Ver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="modalApod" [ngStyle]="{'display':displayModal}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <app-display-apod [dataInput]="selectedApod"></app-display-apod>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeApodModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

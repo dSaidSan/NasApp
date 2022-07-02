@@ -1,0 +1,31 @@
+<div class="container">
+    <h3>Near Earth Objects WS (NEOWS)</h3>
+    <p>Asteroides cercanos a la tierra el día de hoy</p>
+    <div class="row">
+        <div *ngFor="let item of data" class="col-sm-12 col-md-6 col-lg-6">
+            <div class="card border-dark mb-6">
+                <div class="card-header">{{item.name}}</div>
+                <div class="card-body text-dark">
+                    <h5 class="card-title">Magnitud Absoluta: <strong>{{item.absolute_magnitude_h}}</strong></h5>
+                    <p class="card-text">Diametro Estimado: <strong>
+                            {{item.estimated_diameter.kilometers.estimated_diameter_min
+                            | number : '1.2-2'}} -
+                            {{item.estimated_diameter.kilometers.estimated_diameter_max | number : '1.2-2'}} KM
+                        </strong></p>
+                    <p class="card-text">Velocidad Estimada: <strong>
+                            {{item.close_approach_data[0].relative_velocity.kilometers_per_second | number : '1.2-2'}}
+                            KM /
+                            segundo </strong></p>
+                    <p class="card-text">Distancia de fallo: <strong>
+                            {{item.close_approach_data[0].miss_distance.kilometers | number : '1.2-2'}}
+                            KM  </strong></p>
+                    <p class="card-text">Potencialmente peligroso? -
+                        <strong
+                            [ngStyle]="{'color': item.is_potentially_hazardous_asteroid ? 'red' : 'green'}">{{item.is_potentially_hazardous_asteroid
+                            ? 'SI' : 'NO'}}</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="register_form_wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="register_wrapper">
+          <h3>Registrar usuario</h3>
+          <br>
+          <form autocomplete="off" [formGroup]="form" (ngSubmit)="crearUsuario()">
+
+            <div class="formsix-pos">
+              <div class="form-group i-email">
+                <input type="email" class="form-control" formControlName="email" id="email" placeholder="Email *">
+              </div>
+            </div>
+            <div class="formsix-e">
+              <div class="form-group i-password">
+                <input type="password" class="form-control" formControlName="password" id="password"
+                  placeholder="Password *">
+              </div>
+            </div>
+            <br>
+            <div class="register_btn_wrapper">
+              <button type="submit" class="btn btn-outline-primary btn-block">
+                Registrar
+              </button>
+            </div>
+            <div class="register_message">
+              <p><a routerLink="/login"> volver al login </a> </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
